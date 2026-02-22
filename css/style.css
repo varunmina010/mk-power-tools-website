@@ -42,11 +42,27 @@
             margin: auto;
         }
 
+        /* Updated .logo container */
+        /* Styles the container holding both the image and text */
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* This creates the space between the logo and the text */
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-red);
             text-decoration: none;
+        }
+
+        /* Sizes the logo image so it fits nicely next to the text */
+        .logo img {
+            height: 40px; /* You can adjust this number to make the logo bigger or smaller */
+            width: auto;
+        }
+        /* New rule to size the logo image */
+        .logo img {
+            height: 50px; /* Adjust this value to make it bigger or smaller */
+            width: auto;  /* Keeps the image proportions correct */
         }
 
         .nav-links a {
