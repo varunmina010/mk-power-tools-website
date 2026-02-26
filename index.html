@@ -10,25 +10,36 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="images/mk_logo.jpg" class="logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.5rem; color: #cc0000; font-weight: bold;">
-            <img src="images/mk_logo.jpg" alt="MK Tools Logo" style="height: 40px; width: auto; border-radius: 50%;">
-            MK POWER TOOLS
+    <header class="main-header">
+      <div class="header-container">
+        
+        <div class="header-left">
+            <a href="images/mk_logo.jpg" class="logo">
+                <img src="images/mk_logo.jpg" alt="MK Tools Logo">
+                <span>MK POWER TOOLS</span>
             </a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#retail">Retail</a></li>
-                <li><a href="#wholesale">Wholesale</a></li>
-                <li><a href="#repair">Repairing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        </div>
+
+        <div class="header-middle">
+            <form action="#" class="search-form">
+                <input type="text" placeholder="Search machines, blades, parts..." class="search-input">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </div>
+
+        <div class="header-right">
+            <button class="menu-toggle" id="mobile-menu">☰</button>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="#about">About</a>
+                <a href="#retail">Retail</a>
+                <a href="#wholesale">Wholesale</a>
+                <a href="#repair">Repairing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+
+      </div>
     </header>
 
     <div class="hero">
@@ -102,5 +113,7 @@
         <p>&copy; <span id="current-year"></span> MK Power Tools. All Rights Reserved.</p>
     </footer>
 
+    <script link src="js/main.js"> </script>
+    </script>
 </body>
 </html>

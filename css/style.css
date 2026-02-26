@@ -1,266 +1,184 @@
-     /* Base Styles & Theme */
-        :root {
-            --primary-red: #cc0000;
-            --dark-red: #990000;
-            --white: #ffffff;
-            --light-gray: #f4f4f4;
-            --dark-text: #333333;
-        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/* Add this at the very top of your CSS */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
 
-        body {
-            background-color: var(--white);
-            color: var(--dark-text);
-            line-height: 1.6;
-        }
 
-        /* Navigation */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+/* =========================================
+   BASE STYLES (Mobile Phones First) 
+========================================= */
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: auto;
-        }
+.main-header {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 5%;
+}
 
-        /* Updated .logo container */
-        /* Styles the container holding both the image and text */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px; /* This creates the space between the logo and the text */
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-red);
-            text-decoration: none;
-        }
+.header-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows the search bar to drop to the next line */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    gap: 15px; 
+}
 
-        /* Sizes the logo image so it fits nicely next to the text */
-        .logo img {
-            height: 40px; /* You can adjust this number to make the logo bigger or smaller */
-            width: auto;
-        }
-        /* New rule to size the logo image */
-        .logo img {
-            height: 50px; /* Adjust this value to make it bigger or smaller */
-            width: auto;  /* Keeps the image proportions correct */
-        }
+/* --- 1. Left: Logo (Sized for Phones) --- */
+.header-left .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    font-weight: bold;
+    white-space: nowrap;
+}
 
-        .nav-links a {
-            color: var(--dark-text);
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+.header-left .logo img {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+}
 
-        .nav-links a:hover {
-            color: var(--primary-red);
-        }
+/* --- 2. Middle: Search Bar (Full width bottom row on Phones) --- */
+.header-middle {
+    order: 3; /* Pushes the search bar to the very bottom */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(204, 0, 0, 0.9), rgba(153, 0, 0, 0.9)), url('hero-bg.jpg') center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 100px 20px;
-        }
+.search-form {
+    display: flex;
+    width: 100%;
+    border: 2px solid var(--primary-red);
+    border-radius: 25px;
+    overflow: hidden;
+}
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+.search-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
 
-        /* General Section Styling */
-        section {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: auto;
-        }
+.search-btn {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
 
-        section h2 {
-            text-align: center;
-            color: var(--primary-red);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-        }
+/* --- 3. Right: Menu & Hamburger --- */
+.header-right {
+    display: flex;
+    align-items: center;
+}
 
-        .bg-light {
-            background-color: var(--light-gray);
-        }
+.menu-toggle {
+    display: block; /* Visible by default on phones */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--primary-red);
+    cursor: pointer;
+}
 
-        /* Cards for Products/Services */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+/* Mobile Slide-out Menu */
+.nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0; 
+    width: 100%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    /* NEW: This hides the menu smoothly without stretching the screen */
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out;
+}
 
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 4px solid var(--primary-red);
-            transition: transform 0.3s;
-        }
+.nav-links.active {
+    /* NEW: This slides the menu perfectly back into place */
+    transform: translateX(0); 
+}
+.nav-links a {
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 500;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
 
-        .card h3 {
-            color: var(--dark-red);
-            margin-bottom: 1rem;
-        }
+/* =========================================
+   DESKTOP & TABLET STYLES (min-width)
+========================================= */
 
-        /* Image Placeholder Styling */
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            filter: grayscale(20%); /* Subtle filter effect */
-            transition: filter 0.3s ease;
-        }
+@media (min-width: 900px) {
+    
+    .header-container {
+        flex-wrap: nowrap; /* Stops wrapping, forces single line */
+        gap: 20px;
+    }
 
-        .card:hover img {
-            filter: grayscale(0%);
-        }
+    /* Scale up the logo */
+    .header-left .logo {
+        font-size: 1.5rem;
+    }
 
-        /* Contact Section */
-        .contact-container {
-            text-align: center;
-        }
+    .header-left .logo img {
+        height: 40px;
+    }
 
-        .btn {
-            display: inline-block;
-            background: var(--primary-red);
-            color: var(--white);
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 1rem;
-        }
+    /* Pull search bar back into the middle row */
+    .header-middle {
+        order: initial; /* Removes the order: 3 rule */
+        flex: 1; /* Fills remaining space */
+        max-width: 500px;
+    }
 
-        .btn:hover {
-            background: var(--dark-red);
-        }
+    /* Hide the hamburger button */
+    .menu-toggle {
+        display: none;
+    }
 
-        /* Footer */
-        footer {
-            background: var(--dark-text);
-            color: var(--white);
-            text-align: center;
-            padding: 20px 0;
-        }
+    /* Convert the mobile menu into a standard horizontal navigation bar */
+    .nav-links {
+        position: static; /* Removes absolute positioning */
+        flex-direction: row; /* Aligns links horizontally */
+        width: auto;
+        box-shadow: none;
+        gap: 1.5rem;
 
-        /* --- Mobile Responsiveness --- */
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
+        transform: none;
+    }
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
+    .nav-links a {
+        padding: 0;
+        border-bottom: none;
+        transition: color 0.3s;
+    }
 
-        .menu-toggle .bar {
-            height: 3px;
-            width: 25px;
-            background-color: var(--primary-red);
-            margin: 4px 0;
-            transition: 0.3s ease;
-        }
-
-        /* Styles specifically for screens smaller than 768px (Phones/Tablets) */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex; /* Show the hamburger icon */
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                right: -100%; /* Hide menu off-screen by default */
-                flex-direction: column;
-                background-color: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: right 0.3s ease;
-                box-shadow: 0 5px 5px rgba(0,0,0,0.1);
-            }
-
-            /* This class will be added by our JavaScript */
-            .nav-links.active {
-                right: 0; /* Slide menu onto the screen */
-            }
-
-            .nav-links li {
-                margin: 1.5rem 0;
-            }
-
-            .nav-links a {
-                margin-left: 0;
-                font-size: 1.2rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem; /* Make hero text fit better */
-            }
-
-            section {
-                padding: 50px 5%; /* Tighter spacing on mobile */
-            }
-
-            html {
-                font-size: 15px; 
-            }
-
-            /* 2. Shrink the massive Hero text */
-            .hero {
-                padding: 60px 20px; /* Also reduces the spacing around the text */
-            }
-
-            .hero h1 {
-                font-size: 2.2rem; 
-                line-height: 1.2;
-            }
-
-            /* 3. Shrink the main section titles (About, Retail, etc.) */
-            section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-            /* 4. Shrink the titles inside the product cards */
-            .card h3 {
-                font-size: 1.4rem;
-            }
-        }
+    .nav-links a:hover {
+        color: var(--primary-red);
+    }
+}
