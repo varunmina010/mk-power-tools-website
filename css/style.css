@@ -5,6 +5,25 @@ html, body {
     width: 100%;
 }
 
+/* =========================================
+   BASE BODY STYLES
+========================================= */
+body {
+    /* A subtle, professional gradient: White at the top, very light red/gray at the bottom */
+    background: linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #f4f4f4 100%);
+    
+    /* Ensure the gradient stretches the full height of the page */
+    min-height: 100vh;
+    background-attachment: fixed; /* Keeps the gradient still while the user scrolls down */
+    
+    /* Your standard text settings */
+    color: #333333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 
 
 /* =========================================
@@ -180,5 +199,567 @@ html, body {
 
     .nav-links a:hover {
         color: var(--primary-red);
+    }
+}
+
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero {
+    /* Creates a dark red/black gradient overlay on top of an image */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(204, 0, 0, 0.6)), url('images/hero-bg.jpg') center/cover no-repeat;
+    background-color: #333333; /* Fallback color if the image doesn't load */
+    
+    /* Centers everything nicely */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* Sizing and spacing */
+    min-height: 30vh; /* Takes up 60% of the screen height */
+    padding: 80px 20px;
+    color: #ffffff;
+}
+
+/* Styles for the main quote */
+.hero h1 {
+    font-size: 3rem;
+    max-width: 900px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-style: italic; /* Makes the quote look distinguished */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds a subtle shadow so it's easy to read */
+}
+
+/* Styles for the sub-text */
+.hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Styles for the "Get in Touch" Button */
+.btn {
+    display: inline-block;
+    background-color: #cc0000;
+    color: #ffffff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #cc0000;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect when the mouse moves over the button */
+.btn:hover {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff; /* Button becomes outlined */
+    transform: translateY(-3px); /* Makes the button "lift" slightly */
+}
+
+/* --- Mobile Responsiveness for Hero --- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 30vh;
+        padding: 60px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem; /* Shrinks the giant text for phones */
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+/* General padding for the section to give it breathing room */
+.about-section {
+    padding: 80px 5%;
+    background-color: transparent;
+}
+
+/* Style the main section headings */
+.about-section h2 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    position: relative; /* Needed for the red underline below */
+}
+
+/* Creates a nice red decorative line under "About Us" */
+.about-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #cc0000;
+    margin: 15px auto 0; /* Centers the line and adds space above it */
+    border-radius: 2px;
+}
+
+/* Styles the container holding the paragraph */
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto; /* Centers the box on the screen */
+}
+
+/* Styles the actual text for maximum readability */
+.about-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555555;
+}
+
+/* Highlights the bold text in your brand color */
+.about-content strong {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+/* --- Mobile Responsiveness for About --- */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 5%;
+    }
+    
+    .about-section h2 {
+        font-size: 2rem;
+    }
+    
+    .about-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+
+
+/* =========================================
+   RETAIL PRODUCTS SECTION
+========================================= */
+
+/* The light background separates it from the white About section */
+.bg-light {
+    background-color: transparent;
+    padding: 80px 5%;
+}
+
+/* Matching the heading style from the About section */
+#retail h2 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* The red decorative line under "Retail Products" */
+#retail h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #cc0000;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Grid layout: automatically stacks on phones, side-by-side on computers */
+.grid-container {
+    display: grid;
+    /* This magic line makes it automatically responsive without needing media queries! */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The individual product cards */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden; /* Keeps the images perfectly inside the rounded corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid #cc0000; /* Red accent at the bottom of each card */
+}
+
+/* Hover effect to make the cards feel interactive */
+.card:hover {
+    transform: translateY(-10px); /* Lifts the card up slightly */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Makes the shadow darker */
+}
+
+/* Standardizing the image sizes */
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Prevents your tool photos from stretching or squishing */
+    display: block;
+}
+
+/* Spacing and coloring for the text inside the cards */
+.card h3 {
+    color: #cc0000; /* Makes the product title pop */
+    font-size: 1.5rem;
+    margin: 20px 20px 10px 20px;
+}
+
+.card p {
+    color: #555555;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 20px 25px 20px;
+}
+
+/* --- Mobile Responsiveness for Retail Section --- */
+@media (max-width: 768px) {
+    .bg-light {
+        padding: 60px 5%;
+    }
+
+    #retail h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .card img {
+        height: 200px; /* Slightly shorter images on small phone screens */
+    }
+}
+
+
+/* =========================================
+   WHOLESALE SECTION
+========================================= */
+.wholesale-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.wholesale-section h2, 
+.repair-section h2 {
+    color: #333333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Red decorative underline for both headers */
+.wholesale-section h2::after, 
+.repair-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #cc0000;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.wholesale-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wholesale-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   REPAIRING SECTION
+========================================= */
+/* Note: The .bg-light class already gives this section the gray background! */
+
+.repair-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.repair-intro {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 40px;
+}
+
+/* Styles the repair services into a clean, professional box */
+.repair-list {
+    list-style: none; /* Removes the default ugly black dots */
+    padding: 30px 40px;
+    margin: 0;
+    text-align: left;
+    display: inline-block; /* Keeps the box centered on the page */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
+    border-left: 5px solid #cc0000; /* Red accent bar on the left */
+}
+
+.repair-list li {
+    font-size: 1.1rem;
+    color: #333333;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.repair-list li:last-child {
+    margin-bottom: 0; /* Removes extra space at the bottom */
+}
+
+/* Styles the checkmarks */
+.check {
+    color: #cc0000;
+    font-weight: bold;
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .wholesale-section {
+        padding: 60px 5%;
+    }
+    
+    .wholesale-section h2, 
+    .repair-section h2 {
+        font-size: 2rem;
+    }
+    
+    .wholesale-content p, 
+    .repair-intro {
+        font-size: 1rem;
+    }
+
+    .repair-list {
+        padding: 20px;
+        width: 100%; /* Makes the box fill the phone screen */
+    }
+}
+
+
+/* =========================================
+   REPAIRING SECTION
+========================================= */
+
+/* Spacing for the overall section */
+.repair-section {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+/* Heading styles matching the rest of the site */
+.repair-section h2 {
+    color: #333333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* The red decorative underline */
+.repair-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #cc0000;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Container for the text and list */
+.repair-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.repair-intro {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 40px;
+}
+
+/* Styles the repair services into a clean, professional box */
+.repair-list {
+    list-style: none; /* Removes the default ugly black dots */
+    padding: 30px 40px;
+    margin: 0;
+    text-align: left;
+    display: inline-block; /* Keeps the box centered on the page */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
+    border-left: 5px solid #cc0000; /* Red accent bar on the left */
+}
+
+.repair-list li {
+    font-size: 1.1rem;
+    color: #333333;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.repair-list li:last-child {
+    margin-bottom: 0; /* Removes extra space under the last item */
+}
+
+/* Styles the checkmarks to be red and bold */
+.check {
+    color: #cc0000;
+    font-weight: bold;
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .repair-section {
+        padding: 60px 5%;
+    }
+    
+    .repair-section h2 {
+        font-size: 2rem;
+    }
+    
+    .repair-intro {
+        font-size: 1rem;
+    }
+
+    .repair-list {
+        padding: 20px;
+        width: 100%; /* Makes the box fill the phone screen */
+        box-sizing: border-box; /* Ensures padding doesn't break the width */
+    }
+}
+
+
+/* =========================================
+   CONTACT SECTION
+========================================= */
+#contact {
+    padding: 80px 5%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+#contact h2 {
+    color: #333333;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Red decorative underline */
+#contact h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #cc0000;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Styles the contact details into a clean, floating card */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f8f9fa; /* Light gray box */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
+    border-top: 5px solid #cc0000; /* Red accent bar on the top */
+    text-align: left; /* Left-aligns text for easier reading */
+}
+
+/* Styles the individual lines of contact info */
+.contact-container p {
+    font-size: 1.1rem;
+    color: #555555;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eeeeee; /* Adds subtle lines between rows */
+    padding-bottom: 10px;
+    display: flex; /* Helps align the bold text and normal text */
+}
+
+.contact-container p:last-child {
+    margin-bottom: 0;
+    border-bottom: none; /* Removes the line from the last item */
+    padding-bottom: 0;
+}
+
+/* Gives the bold labels a fixed width so everything lines up neatly like a table */
+.contact-container strong {
+    color: #333333;
+    width: 120px; 
+    flex-shrink: 0; /* Prevents the label from getting squished */
+}
+
+
+/* =========================================
+   FOOTER SECTION
+========================================= */
+footer {
+    background-color: #222222; /* Dark, professional gray/black */
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 5%;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    #contact {
+        padding: 60px 5%;
+    }
+    
+    #contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact-container {
+        padding: 25px 20px;
+    }
+    
+    /* On small screens, stack the label and the text on top of each other */
+    .contact-container p {
+        flex-direction: column; 
+        align-items: flex-start;
+        border-bottom: none;
+    }
+
+    .contact-container strong {
+        color: #cc0000; /* Make the labels red on phones so they stand out */
+        margin-bottom: 5px;
     }
 }
