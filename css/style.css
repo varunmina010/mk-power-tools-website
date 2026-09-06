@@ -1,8 +1,35 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap);
+
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    font-family: "Montserrat", sans-serif;
+}
 
 /* Add this at the very top of your CSS */
-html, body {
+html {
+    font-size: 62.5%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7.5rem;
+}
+
+html,
+body {
+    overflow-x: clip;
     width: 100%;
+}
+
+:root {
+    --primary-red: #cc0000;
+    --white: #ffffff;
+    --light-gray: #f4f4f4;
+    --dark-text: #333333;
 }
 
 /* =========================================
@@ -11,14 +38,15 @@ html, body {
 body {
     /* A subtle, professional gradient: White at the top, very light red/gray at the bottom */
     background: linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #f4f4f4 100%);
-    
+
     /* Ensure the gradient stretches the full height of the page */
     min-height: 100vh;
-    background-attachment: fixed; /* Keeps the gradient still while the user scrolls down */
-    
+    background-attachment: fixed;
+    /* Keeps the gradient still while the user scrolls down */
+
     /* Your standard text settings */
     color: #333333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Montserrat", Verdana, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,21 +60,24 @@ body {
 
 .main-header {
     background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
+    right: 0;
+    left: 0;
     z-index: 1000;
     padding: 10px 5%;
 }
 
 .header-container {
     display: flex;
-    flex-wrap: wrap; /* Allows the search bar to drop to the next line */
+    flex-wrap: wrap;
+    /* Allows the search bar to drop to the next line */
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: auto;
-    gap: 15px; 
+    gap: 15px;
 }
 
 /* --- 1. Left: Logo (Sized for Phones) --- */
@@ -67,40 +98,6 @@ body {
     border-radius: 50%;
 }
 
-/* --- 2. Middle: Search Bar (Full width bottom row on Phones) --- */
-.header-middle {
-    order: 3; /* Pushes the search bar to the very bottom */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.search-form {
-    display: flex;
-    width: 100%;
-    border: 2px solid var(--primary-red);
-    border-radius: 25px;
-    overflow: hidden;
-}
-
-.search-input {
-    flex: 1;
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-}
-
-.search-btn {
-    background-color: var(--primary-red);
-    color: var(--white);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
 /* --- 3. Right: Menu & Hamburger --- */
 .header-right {
     display: flex;
@@ -108,7 +105,8 @@ body {
 }
 
 .menu-toggle {
-    display: block; /* Visible by default on phones */
+    display: block;
+    /* Visible by default on phones */
     font-size: 2rem;
     background: none;
     border: none;
@@ -120,24 +118,25 @@ body {
 .nav-links {
     position: absolute;
     top: 100%;
-    right: 0; 
+    right: 0;
     width: 100%;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
     /* NEW: This hides the menu smoothly without stretching the screen */
-    transform: translateX(100%); 
+    transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
 }
 
 .nav-links.active {
     /* NEW: This slides the menu perfectly back into place */
-    transform: translateX(0); 
+    transform: translateX(0);
 }
+
 .nav-links a {
     display: block;
     padding: 15px 0;
@@ -153,9 +152,10 @@ body {
 ========================================= */
 
 @media (min-width: 900px) {
-    
+
     .header-container {
-        flex-wrap: nowrap; /* Stops wrapping, forces single line */
+        flex-wrap: nowrap;
+        /* Stops wrapping, forces single line */
         gap: 20px;
     }
 
@@ -170,8 +170,10 @@ body {
 
     /* Pull search bar back into the middle row */
     .header-middle {
-        order: initial; /* Removes the order: 3 rule */
-        flex: 1; /* Fills remaining space */
+        order: initial;
+        /* Removes the order: 3 rule */
+        flex: 1;
+        /* Fills remaining space */
         max-width: 500px;
     }
 
@@ -182,8 +184,10 @@ body {
 
     /* Convert the mobile menu into a standard horizontal navigation bar */
     .nav-links {
-        position: static; /* Removes absolute positioning */
-        flex-direction: row; /* Aligns links horizontally */
+        position: static;
+        /* Removes absolute positioning */
+        flex-direction: row;
+        /* Aligns links horizontally */
         width: auto;
         box-shadow: none;
         gap: 1.5rem;
@@ -209,20 +213,23 @@ body {
 ========================================= */
 .hero {
     /* Creates a dark red/black gradient overlay on top of an image */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(204, 0, 0, 0.6)), url('images/hero-bg.jpg') center/cover no-repeat;
-    background-color: #333333; /* Fallback color if the image doesn't load */
-    
+    background: linear-gradient(rgba(42, 1, 1, 0.7), rgba(204, 0, 0, 0.6)), center/cover no-repeat;
+    background-color: #333333;
+    /* Fallback color if the image doesn't load */
+
     /* Centers everything nicely */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    
+
     /* Sizing and spacing */
-    min-height: 30vh; /* Takes up 60% of the screen height */
+    min-height: 50vh;
+    /* Takes up 60% of the screen height */
     padding: 80px 20px;
     color: #ffffff;
+    shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* Styles for the main quote */
@@ -231,8 +238,10 @@ body {
     max-width: 900px;
     margin-bottom: 20px;
     line-height: 1.2;
-    font-style: italic; /* Makes the quote look distinguished */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds a subtle shadow so it's easy to read */
+    font-style: italic;
+    /* Makes the quote look distinguished */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Adds a subtle shadow so it's easy to read */
 }
 
 /* Styles for the sub-text */
@@ -241,7 +250,7 @@ body {
     max-width: 600px;
     margin-bottom: 30px;
     font-weight: 500;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Styles for the "Get in Touch" Button */
@@ -262,8 +271,10 @@ body {
 .btn:hover {
     background-color: transparent;
     color: #ffffff;
-    border: 2px solid #ffffff; /* Button becomes outlined */
-    transform: translateY(-3px); /* Makes the button "lift" slightly */
+    border: 2px solid #ffffff;
+    /* Button becomes outlined */
+    transform: translateY(-3px);
+    /* Makes the button "lift" slightly */
 }
 
 /* --- Mobile Responsiveness for Hero --- */
@@ -272,11 +283,12 @@ body {
         min-height: 30vh;
         padding: 60px 20px;
     }
-    
+
     .hero h1 {
-        font-size: 2rem; /* Shrinks the giant text for phones */
+        font-size: 2rem;
+        /* Shrinks the giant text for phones */
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
@@ -301,7 +313,8 @@ body {
     font-size: 2.5rem;
     margin-bottom: 30px;
     text-transform: uppercase;
-    position: relative; /* Needed for the red underline below */
+    position: relative;
+    /* Needed for the red underline below */
 }
 
 /* Creates a nice red decorative line under "About Us" */
@@ -311,7 +324,8 @@ body {
     width: 60px;
     height: 4px;
     background-color: #cc0000;
-    margin: 15px auto 0; /* Centers the line and adds space above it */
+    margin: 15px auto 0;
+    /* Centers the line and adds space above it */
     border-radius: 2px;
 }
 
@@ -319,7 +333,8 @@ body {
 .about-content {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto; /* Centers the box on the screen */
+    margin: 0 auto;
+    /* Centers the box on the screen */
 }
 
 /* Styles the actual text for maximum readability */
@@ -340,11 +355,11 @@ body {
     .about-section {
         padding: 60px 5%;
     }
-    
+
     .about-section h2 {
         font-size: 2rem;
     }
-    
+
     .about-content p {
         font-size: 1rem;
         line-height: 1.6;
@@ -398,29 +413,36 @@ body {
 .card {
     background-color: #ffffff;
     border-radius: 10px;
-    overflow: hidden; /* Keeps the images perfectly inside the rounded corners */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow for depth */
+    overflow: hidden;
+    /* Keeps the images perfectly inside the rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* Soft shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-bottom: 4px solid #cc0000; /* Red accent at the bottom of each card */
+    border-bottom: 4px solid #cc0000;
+    /* Red accent at the bottom of each card */
 }
 
 /* Hover effect to make the cards feel interactive */
 .card:hover {
-    transform: translateY(-10px); /* Lifts the card up slightly */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Makes the shadow darker */
+    transform: translateY(-10px);
+    /* Lifts the card up slightly */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* Makes the shadow darker */
 }
 
 /* Standardizing the image sizes */
 .card img {
     width: 100%;
     height: 250px;
-    object-fit: cover; /* Prevents your tool photos from stretching or squishing */
+    object-fit: cover;
+    /* Prevents your tool photos from stretching or squishing */
     display: block;
 }
 
 /* Spacing and coloring for the text inside the cards */
 .card h3 {
-    color: #cc0000; /* Makes the product title pop */
+    color: #cc0000;
+    /* Makes the product title pop */
     font-size: 1.5rem;
     margin: 20px 20px 10px 20px;
 }
@@ -444,7 +466,8 @@ body {
     }
 
     .card img {
-        height: 200px; /* Slightly shorter images on small phone screens */
+        height: 200px;
+        /* Slightly shorter images on small phone screens */
     }
 }
 
@@ -458,7 +481,7 @@ body {
     text-align: center;
 }
 
-.wholesale-section h2, 
+.wholesale-section h2,
 .repair-section h2 {
     color: #333333;
     font-size: 2.5rem;
@@ -468,7 +491,7 @@ body {
 }
 
 /* Red decorative underline for both headers */
-.wholesale-section h2::after, 
+.wholesale-section h2::after,
 .repair-section h2::after {
     content: '';
     display: block;
@@ -511,15 +534,19 @@ body {
 
 /* Styles the repair services into a clean, professional box */
 .repair-list {
-    list-style: none; /* Removes the default ugly black dots */
+    list-style: none;
+    /* Removes the default ugly black dots */
     padding: 30px 40px;
     margin: 0;
     text-align: left;
-    display: inline-block; /* Keeps the box centered on the page */
+    display: inline-block;
+    /* Keeps the box centered on the page */
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
-    border-left: 5px solid #cc0000; /* Red accent bar on the left */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    border-left: 5px solid #cc0000;
+    /* Red accent bar on the left */
 }
 
 .repair-list li {
@@ -530,7 +557,8 @@ body {
 }
 
 .repair-list li:last-child {
-    margin-bottom: 0; /* Removes extra space at the bottom */
+    margin-bottom: 0;
+    /* Removes extra space at the bottom */
 }
 
 /* Styles the checkmarks */
@@ -546,20 +574,21 @@ body {
     .wholesale-section {
         padding: 60px 5%;
     }
-    
-    .wholesale-section h2, 
+
+    .wholesale-section h2,
     .repair-section h2 {
         font-size: 2rem;
     }
-    
-    .wholesale-content p, 
+
+    .wholesale-content p,
     .repair-intro {
         font-size: 1rem;
     }
 
     .repair-list {
         padding: 20px;
-        width: 100%; /* Makes the box fill the phone screen */
+        width: 100%;
+        /* Makes the box fill the phone screen */
     }
 }
 
@@ -609,15 +638,19 @@ body {
 
 /* Styles the repair services into a clean, professional box */
 .repair-list {
-    list-style: none; /* Removes the default ugly black dots */
+    list-style: none;
+    /* Removes the default ugly black dots */
     padding: 30px 40px;
     margin: 0;
     text-align: left;
-    display: inline-block; /* Keeps the box centered on the page */
+    display: inline-block;
+    /* Keeps the box centered on the page */
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
-    border-left: 5px solid #cc0000; /* Red accent bar on the left */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    border-left: 5px solid #cc0000;
+    /* Red accent bar on the left */
 }
 
 .repair-list li {
@@ -628,7 +661,8 @@ body {
 }
 
 .repair-list li:last-child {
-    margin-bottom: 0; /* Removes extra space under the last item */
+    margin-bottom: 0;
+    /* Removes extra space under the last item */
 }
 
 /* Styles the checkmarks to be red and bold */
@@ -644,19 +678,21 @@ body {
     .repair-section {
         padding: 60px 5%;
     }
-    
+
     .repair-section h2 {
         font-size: 2rem;
     }
-    
+
     .repair-intro {
         font-size: 1rem;
     }
 
     .repair-list {
         padding: 20px;
-        width: 100%; /* Makes the box fill the phone screen */
-        box-sizing: border-box; /* Ensures padding doesn't break the width */
+        width: 100%;
+        /* Makes the box fill the phone screen */
+        box-sizing: border-box;
+        /* Ensures padding doesn't break the width */
     }
 }
 
@@ -693,12 +729,16 @@ body {
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #f8f9fa; /* Light gray box */
+    background-color: #f8f9fa;
+    /* Light gray box */
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
-    border-top: 5px solid #cc0000; /* Red accent bar on the top */
-    text-align: left; /* Left-aligns text for easier reading */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    border-top: 5px solid #cc0000;
+    /* Red accent bar on the top */
+    text-align: left;
+    /* Left-aligns text for easier reading */
 }
 
 /* Styles the individual lines of contact info */
@@ -706,22 +746,26 @@ body {
     font-size: 1.1rem;
     color: #555555;
     margin-bottom: 15px;
-    border-bottom: 1px solid #eeeeee; /* Adds subtle lines between rows */
+    border-bottom: 1px solid #eeeeee;
+    /* Adds subtle lines between rows */
     padding-bottom: 10px;
-    display: flex; /* Helps align the bold text and normal text */
+    display: flex;
+    /* Helps align the bold text and normal text */
 }
 
 .contact-container p:last-child {
     margin-bottom: 0;
-    border-bottom: none; /* Removes the line from the last item */
+    border-bottom: none;
+    /* Removes the line from the last item */
     padding-bottom: 0;
 }
 
 /* Gives the bold labels a fixed width so everything lines up neatly like a table */
 .contact-container strong {
     color: #333333;
-    width: 120px; 
-    flex-shrink: 0; /* Prevents the label from getting squished */
+    width: 120px;
+    flex-shrink: 0;
+    /* Prevents the label from getting squished */
 }
 
 
@@ -729,7 +773,8 @@ body {
    FOOTER SECTION
 ========================================= */
 footer {
-    background-color: #222222; /* Dark, professional gray/black */
+    background-color: #222222;
+    /* Dark, professional gray/black */
     color: #ffffff;
     text-align: center;
     padding: 25px 5%;
@@ -742,7 +787,7 @@ footer {
     #contact {
         padding: 60px 5%;
     }
-    
+
     #contact h2 {
         font-size: 2rem;
     }
@@ -750,16 +795,17 @@ footer {
     .contact-container {
         padding: 25px 20px;
     }
-    
+
     /* On small screens, stack the label and the text on top of each other */
     .contact-container p {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: flex-start;
         border-bottom: none;
     }
 
     .contact-container strong {
-        color: #cc0000; /* Make the labels red on phones so they stand out */
+        color: #cc0000;
+        /* Make the labels red on phones so they stand out */
         margin-bottom: 5px;
     }
 }
